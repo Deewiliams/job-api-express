@@ -6,6 +6,7 @@ const notFound = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
 const authRouter = require('./routes/auth');
 const jobRouter = require('./routes/job')
+const connectDB = require('./db/connect')
 
 //middelware
 app.use(express.json())
@@ -22,6 +23,7 @@ const port = process.env.PORT || 3000
 
 const start = async () => {
     try {
+        await connectDB(process.env.MONGO_URI)
         app.listen(port, console.log(`listening to port${port}`));
     } catch (error) {
         console.log(error);
