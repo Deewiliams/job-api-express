@@ -8,7 +8,7 @@ const login  = async (req, res) => {
 }
 
 
-modelu.exports = {
+module.exports = {
     register,
     login
 }

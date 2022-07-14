@@ -19,7 +19,7 @@ const deleteJobs  = async (req, res) => {
 }
 
 
-modelu.exports = {
+module.exports = {
     getAllJobs,
     getJob,
     createJobs,

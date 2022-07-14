@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router
+const router = express.Router()
 const {
     getAllJobs,
     getJob,
@@ -12,4 +12,4 @@ const {
 router.route('/').post(createJobs).get(getAllJobs)
 router.route('/:id').get(getJob).delete(deleteJobs).patch(updateJobs)
 
-module.exports = router
+module.exports = router 

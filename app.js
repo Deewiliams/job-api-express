@@ -4,18 +4,17 @@ const express = require('express');
 const app = express();
 const notFound = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
-// const mainRouter = require('./routes/main')
+const authRouter = require('./routes/auth');
+const jobRouter = require('./routes/job')
 
 //middelware
 app.use(express.json())
 
-app.get('/', function (req, res) {
-    res.send('<h1>store api </h1>')
-})
+//routers
+app.use('/api/auth',authRouter )
+app.use('/api/jobs',jobRouter )
 
-// app.use('/api',mainRouter )
-
-//error handling
+//error handler 
 app.use(notFound);
 app.use(errorHandlerMiddleware);
 
