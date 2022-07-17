@@ -27,11 +27,16 @@ const login = async (req, res) => {
         throw new BadRequestError('please provide email and password')
     }
 
-    const user = await User.findOne({ email })
-    //comparing password
+    const user = await User.findOne({ email }) 
     if (!user) {
         throw new UnthenticatedError('Invalid Crendentials')
     }
+
+    const isPasswordCorrect = await user.comparePassword(password)
+        if(!isPasswordCorrect){
+            throw new UnthenticatedError('Invalid Crendentials')
+        }
+    
     const token = user.createJWT();
 
     res.status(StatusCodes.OK).json({user: {name: user.name},token})
