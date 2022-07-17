@@ -16,10 +16,8 @@ const register  = async (req, res) => {
     
     
     const user = await User.create({...tempUser})
-    const token = jwt.sign({ userId: user._id, name: user.getName()}, 'jwtScret', {
-        expiresIn: '30d'
-    })
-    res.status(StatusCodes.CREATED).json({user: {name: user.getName()},token})
+    const token = user.createJWT()
+    res.status(StatusCodes.CREATED).json({user: {name: user.name},token})
 }
 
 const login  = async (req, res) => {
