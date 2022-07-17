@@ -31,6 +31,7 @@ const login = async (req, res) => {
     if (!user) {
         throw new UnthenticatedError('Invalid Crendentials')
     }
+    //comparing the password
 
     const isPasswordCorrect = await user.comparePassword(password)
         if(!isPasswordCorrect){
