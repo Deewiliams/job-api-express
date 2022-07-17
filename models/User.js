@@ -27,4 +27,7 @@ const UserSchema = new mongoose.Schema({
 //     this.password = await bcrypt.hash(this.password,salt)
 // })
 
+UserSchema.methods.getName = function () {
+    return this.name
+}
 module.exports = mongoose.model('User',UserSchema)
